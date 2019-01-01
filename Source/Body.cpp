@@ -41,3 +41,23 @@ Vector Body::attraction(const Body& body) const
     double theta = std::atan2(distance.y, distance.x);
     return Vector(std::cos(theta) * force, std::sin(theta) * force);
 }
+
+bool Body::operator==(const Body& other) const
+{
+    return m_name == other.name();
+}
+
+void Body::updateVelocity(Vector offset)
+{
+    m_velocity += offset;
+}
+
+void Body::updatePosition(Vector offset)
+{
+    m_position += offset;
+}
+
+bool Body::operator<(const Body& other) const
+{
+    return m_name < other.name();
+}

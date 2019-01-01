@@ -20,7 +20,15 @@ public:
 
     Vector velocity() const;
 
+    void updateVelocity(Vector offset);
+
+    void updatePosition(Vector offset);
+
     Vector attraction(const Body& body) const;
+
+    bool operator==(const Body& other) const;
+
+    bool operator<(const Body& other) const;
 
 private:
     std::string m_name;
