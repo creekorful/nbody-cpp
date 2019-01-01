@@ -7,5 +7,6 @@ Application::Application(int argc, char** argv)
 
 int Application::execute()
 {
-    return 0;
+    System system;
+    return system.simulate();
 }

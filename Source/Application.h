@@ -1,6 +1,7 @@
 #ifndef NBODY_CPP_APPLICATION_H
 #define NBODY_CPP_APPLICATION_H
 
+#include "System.h"
 
 class Application
 {
