@@ -4,10 +4,15 @@
 #include <iostream>
 #include <cmath>
 
+#include <SFML/Graphics/Drawable.hpp>
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
+
 #include "Vector.h"
 #include "constant.h"
 
-class Body
+class Body : sf::Drawable
 {
 public:
     /**
@@ -17,8 +22,9 @@ public:
      * @param mass the body mass (in kg)
      * @param position the body position (in km)
      * @param velocity the body velocity (in m/s)
+     * @param color the body color
      */
-    Body(const std::string& name, double mass, const Vector& position, const Vector& velocity);
+    Body(const std::string& name, double mass, const Vector& position, const Vector& velocity, const sf::Color& color);
 
     /**
      * @return body name
@@ -85,6 +91,15 @@ private:
     double m_mass;
     Vector m_position;
     Vector m_velocity;
+    sf::CircleShape m_shape;
+
+    /**
+     * Render body in window
+     *
+     * @param target the render target
+     * @param states associated render states
+     */
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
 /**
