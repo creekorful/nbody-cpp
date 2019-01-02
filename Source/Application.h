@@ -8,6 +8,7 @@
 #include <SFML/Graphics/CircleShape.hpp>
 
 #include "System.h"
+#include "BodiesLoader.h"
 
 class Application
 {
@@ -20,6 +21,9 @@ private:
     sf::RenderWindow m_window;
     sf::Vector2f m_centerOffset;
     bool m_showTrace;
+
+
+    std::vector<Body> getBodies();
 };
 
 

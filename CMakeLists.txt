@@ -8,6 +8,6 @@ find_package(SFML REQUIRED COMPONENTS graphics window system)
 
 include_directories(${SFML_INCLUDE_DIR})
 
-add_executable(nbody_cpp Source/main.cpp Source/constant.h Source/Application.cpp Source/Application.h Source/Body.cpp Source/Body.h Source/Vector.cpp Source/Vector.h Source/System.cpp Source/System.h)
+add_executable(nbody_cpp Source/main.cpp Source/constant.h Source/Application.cpp Source/Application.h Source/Body.cpp Source/Body.h Source/Vector.cpp Source/Vector.h Source/System.cpp Source/System.h Source/BodiesLoader.cpp Source/BodiesLoader.h)
 
 target_link_libraries(nbody_cpp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})

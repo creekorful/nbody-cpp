@@ -16,9 +16,7 @@ Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDes
 int Application::execute()
 {
     // Instantiate system
-    System system({Body("Sun", 1.98892 * std::pow(10, 30), {}, {}, sf::Color::Yellow),
-                   Body("Earth", 5.9742 * std::pow(10, 24), {-1 * AU, 0}, {0, 29.783 * 1000}, sf::Color::Blue),
-                   Body("Venus", 4.8685 * std::pow(10, 24), {0.723 * AU, 0}, {0, -35.02 * 1000}, sf::Color::Magenta)});
+    System system(getBodies());
 
     // Render loop
     while (m_window.isOpen())
@@ -67,4 +65,20 @@ int Application::execute()
     }
 
     return 0;
+}
+
+std::vector<Body> Application::getBodies()
+{
+    BodiesLoader* pLoader = new BodiesLoader("bodies.config");
+
+    if (!pLoader->isOpen())
+    {
+        delete pLoader;
+        std::cerr << "Unable to open bodies.config" << std::endl;
+        exit(-1);
+    }
+
+    std::vector<Body> bodies = pLoader->loadBodies();
+    delete pLoader;
+    return bodies;
 }
