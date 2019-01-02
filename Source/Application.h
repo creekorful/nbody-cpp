@@ -18,6 +18,7 @@ public:
 
 private:
     sf::RenderWindow m_window;
+    sf::Vector2f m_centerOffset;
 };
 
 
