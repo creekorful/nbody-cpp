@@ -12,7 +12,7 @@ Vector::Vector(double x, double y)
     this->y = y;
 }
 
-Vector Vector::operator-(const Vector& other)
+Vector Vector::operator-(const Vector& other) const
 {
     return Vector(other.x - x, other.y - y);
 }
@@ -23,12 +23,12 @@ void Vector::operator+=(const Vector& other)
     this->y += other.y;
 }
 
-Vector Vector::operator/(double scalar)
+Vector Vector::operator/(double scalar) const
 {
     return Vector(this->x / scalar, this->y + scalar);
 }
 
-Vector Vector::operator*(double scalar)
+Vector Vector::operator*(double scalar) const
 {
     return Vector(this->x * scalar, this->y * scalar);
 }

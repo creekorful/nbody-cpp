@@ -14,13 +14,13 @@ public:
 
     Vector(double x, double y);
 
-    Vector operator-(const Vector& other);
+    Vector operator-(const Vector& other) const;
 
     void operator+=(const Vector& other);
 
-    Vector operator/(double scalar);
+    Vector operator/(double scalar) const;
 
-    Vector operator*(double scalar);
+    Vector operator*(double scalar) const;
 };
 
 /**
