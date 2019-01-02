@@ -1,6 +1,6 @@
 #include "Body.h"
 
-Body::Body(const std::string& name, double mass, const Vector& position, const Vector& velocity, const sf::Color& color)
+Body::Body(const std::string& name, double mass, const Vector& position, const Vector& velocity)
 {
     m_name = name;
     m_mass = mass;
@@ -60,11 +60,6 @@ void Body::updatePosition(Vector offset)
 bool Body::operator<(const Body& other) const
 {
     return m_name < other.name();
-}
-
-void Body::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-    target.draw(m_shape, states);
 }
 
 std::ostream& operator<<(std::ostream& outs, const Body& body)
