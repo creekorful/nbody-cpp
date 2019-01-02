@@ -1,4 +1,3 @@
-#include <thread>
 #include "System.h"
 
 System::System(const std::vector<Body>& bodies)
@@ -9,11 +8,10 @@ System::System(const std::vector<Body>& bodies)
 int System::simulate()
 {
     double timestep = 24*3600; // one day
+    std::map<Body, Vector> forces;
 
     while (true)
     {
-        std::map<Body, Vector> forces;
-
         // Compute force for all bodies
         for (const Body& body : m_bodies)
         {
