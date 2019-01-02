@@ -12,7 +12,7 @@
 #include "Vector.h"
 #include "constant.h"
 
-class Body : sf::Drawable
+class Body : public sf::Drawable
 {
 public:
     /**
@@ -86,13 +86,7 @@ public:
      */
     bool operator<(const Body& other) const;
 
-private:
-    std::string m_name;
-    double m_mass;
-    Vector m_position;
-    Vector m_velocity;
-    sf::CircleShape m_shape;
-
+protected:
     /**
      * Render body in window
      *
@@ -100,6 +94,13 @@ private:
      * @param states associated render states
      */
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
+private:
+    std::string m_name;
+    double m_mass;
+    Vector m_position;
+    Vector m_velocity;
+    sf::CircleShape m_shape;
 };
 
 /**
