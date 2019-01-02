@@ -19,7 +19,9 @@ void System::simulate()
     for (const Body& body : m_bodies)
     {
         // Output information about current body
+#ifdef DEBUG_ENABLED
         std::cout << body << std::endl;
+#endif
 
         Vector totalForce;
         for (const Body& other : m_bodies)
@@ -44,7 +46,9 @@ void System::simulate()
         body.updatePosition(body.velocity() * timestep);
     }
 
+#ifdef DEBUG_ENABLED
     std::cout << std::endl;
+#endif
 }
 
 std::vector<Body> System::bodies() const
