@@ -25,7 +25,7 @@ void Vector::operator+=(const Vector& other)
 
 Vector Vector::operator/(double scalar) const
 {
-    return Vector(this->x / scalar, this->y + scalar);
+    return Vector(this->x / scalar, this->y / scalar);
 }
 
 Vector Vector::operator*(double scalar) const
