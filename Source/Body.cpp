@@ -1,11 +1,12 @@
 #include "Body.h"
 
-Body::Body(const std::string& name, double mass, const Vector& position, const Vector& velocity)
+Body::Body(const std::string& name, double mass, const Vector& position, const Vector& velocity, const sf::Color& color)
 {
     m_name = name;
     m_mass = mass;
     m_position = position;
     m_velocity = velocity;
+    m_color = color;
 }
 
 std::string Body::name() const
@@ -60,6 +61,11 @@ void Body::updatePosition(Vector offset)
 bool Body::operator<(const Body& other) const
 {
     return m_name < other.name();
+}
+
+sf::Color Body::color() const
+{
+    return m_color;
 }
 
 std::ostream& operator<<(std::ostream& outs, const Body& body)

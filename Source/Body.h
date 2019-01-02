@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cmath>
 
+#include <SFML/Graphics/Color.hpp>
+
 #include "Vector.h"
 #include "constant.h"
 
@@ -17,8 +19,9 @@ public:
      * @param mass the body mass (in kg)
      * @param position the body position (in km)
      * @param velocity the body velocity (in m/s)
+     * @param color the body color
      */
-    Body(const std::string& name, double mass, const Vector& position, const Vector& velocity);
+    Body(const std::string& name, double mass, const Vector& position, const Vector& velocity, const sf::Color& color);
 
     /**
      * @return body name
@@ -63,6 +66,11 @@ public:
     Vector attraction(const Body& body) const;
 
     /**
+     * @return body color
+     */
+    sf::Color color() const;
+
+    /**
      * Check if other is current body
      *
      * @param other the body to check
@@ -85,6 +93,7 @@ private:
     double m_mass;
     Vector m_position;
     Vector m_velocity;
+    sf::Color m_color;
 };
 
 /**
