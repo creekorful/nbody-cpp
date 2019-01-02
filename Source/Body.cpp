@@ -31,7 +31,7 @@ Vector Body::velocity() const
 Vector Body::attraction(const Body& body) const
 {
     // compute distance between two body
-    Vector distance = body.position() - m_position;
+    Vector distance = m_position - body.position();
     double d = std::sqrt(std::pow(distance.x, 2) + std::pow(distance.y, 2));
 
     // compute force of attraction
@@ -64,5 +64,5 @@ bool Body::operator<(const Body& other) const
 
 std::ostream& operator<<(std::ostream& outs, const Body& body)
 {
-    return outs << body.name() << " Pos=" << body.position() << " Vel=" << body.velocity();
+    return outs << body.name() << " Pos=" << body.position()/AU << " Vel=" << body.velocity();
 }
