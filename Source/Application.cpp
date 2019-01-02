@@ -9,6 +9,8 @@ Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDes
 
     // build offset to allow center of screen to be {0, 0} coordinates
     m_centerOffset = sf::Vector2f(m_window.getSize().x / 2, m_window.getSize().y / 2);
+
+    m_showTrace = true;
 }
 
 int Application::execute()
@@ -32,6 +34,16 @@ int Application::execute()
                 m_window.close();
             }
 
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::T)
+            {
+                m_showTrace = !m_showTrace;
+            }
+
+        }
+
+        if (!m_showTrace)
+        {
+            m_window.clear(sf::Color::Black);
         }
 
         // Perform system simulation
