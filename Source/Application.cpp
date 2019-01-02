@@ -2,6 +2,8 @@
 
 Application::Application(int argc, char** argv)
 {
+    // set digits precision to 2 decimals
+    std::cout << std::fixed << std::setprecision(2);
 }
 
 int Application::execute()

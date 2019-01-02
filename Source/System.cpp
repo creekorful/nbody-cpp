@@ -1,3 +1,4 @@
+#include <thread>
 #include "System.h"
 
 System::System(const std::vector<Body>& bodies)
@@ -13,9 +14,10 @@ int System::simulate()
     {
         std::map<Body, Vector> forces;
 
+        // Compute force for all bodies
         for (const Body& body : m_bodies)
         {
-            // output information about current body
+            // Output information about current body
             std::cout << body << std::endl;
 
             Vector totalForce;
@@ -40,6 +42,8 @@ int System::simulate()
             // Update position based on velocity
             body.updatePosition(body.velocity() * timestep);
         }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(1500));
     }
 
     return 0;
