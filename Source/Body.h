@@ -87,5 +87,14 @@ private:
     Vector m_velocity;
 };
 
+/**
+ * Overload operator << to allow display using ostream
+ *
+ * @param outs associated ostream
+ * @param body the body to be displayed
+ * @return body string representation
+ */
+std::ostream& operator<<(std::ostream& outs, const Body& body);
+
 
 #endif //NBODY_CPP_BODY_H

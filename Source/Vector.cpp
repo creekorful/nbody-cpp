@@ -32,3 +32,9 @@ Vector Vector::operator*(double scalar)
 {
     return Vector(this->x * scalar, this->y * scalar);
 }
+
+std::ostream& operator<<(std::ostream& outs, const Vector& vector)
+{
+    return outs << "{x:" << vector.x << ",y:" << vector.y << "}";
+}
+

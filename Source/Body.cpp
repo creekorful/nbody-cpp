@@ -61,3 +61,8 @@ bool Body::operator<(const Body& other) const
 {
     return m_name < other.name();
 }
+
+std::ostream& operator<<(std::ostream& outs, const Body& body)
+{
+    return outs << body.name() << " Pos=" << body.position() << " Vel=" << body.velocity();
+}

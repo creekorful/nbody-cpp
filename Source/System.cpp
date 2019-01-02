@@ -15,6 +15,9 @@ int System::simulate()
 
         for (const Body& body : m_bodies)
         {
+            // output information about current body
+            std::cout << body << std::endl;
+
             Vector totalForce;
             for (const Body& other : m_bodies)
             {
