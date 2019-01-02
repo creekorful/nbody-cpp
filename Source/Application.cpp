@@ -1,6 +1,7 @@
 #include "Application.h"
 
-Application::Application(int argc, char** argv) : m_window(sf::VideoMode(1440, 900), "N-Body C++")
+Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDesktopMode(), "N-Body C++",
+                                                           sf::Style::Fullscreen)
 {
     // set digits precision to 2 decimals
     //std::cout << std::scientific << std::setprecision(2);
