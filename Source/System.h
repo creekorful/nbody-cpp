@@ -13,10 +13,20 @@ class System
 public:
     explicit System(const std::vector<Body>& bodies);
 
-    int simulate();
+    /**
+     * perform one step / iteration
+     * this will compute bodies position
+     */
+    void simulate();
+
+    /**
+     * @return bodies present in the system
+     */
+    std::vector<Body> bodies() const;
 
 private:
     std::vector<Body> m_bodies;
+    int m_iteration;
 };
 
 

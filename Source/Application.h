@@ -3,6 +3,8 @@
 
 #include <iomanip>
 
+#include <SFML/Graphics/RenderWindow.hpp>
+
 #include "System.h"
 
 class Application
