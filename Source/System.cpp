@@ -11,7 +11,10 @@ void System::simulate()
     double timestep = 24*3600; // one day
     std::map<Body, Vector> forces;
 
+#ifdef DEBUG_ENABLED
     std::cout << "Iteration #" << m_iteration++ << std::endl;
+#endif
+
     // Compute force for all bodies
     for (const Body& body : m_bodies)
     {
@@ -40,8 +43,6 @@ void System::simulate()
         // Update position based on velocity
         body.updatePosition(body.velocity() * timestep);
     }
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(150));
 
     std::cout << std::endl;
 }
