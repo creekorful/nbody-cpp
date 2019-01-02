@@ -4,6 +4,7 @@
 #include <iomanip>
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Event.hpp>
 
 #include "System.h"
 
@@ -13,6 +14,9 @@ public:
     Application(int argc, char** argv);
 
     int execute();
+
+private:
+    sf::RenderWindow m_window;
 };
 
 
