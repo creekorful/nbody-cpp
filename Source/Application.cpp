@@ -11,7 +11,7 @@ Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDes
     m_centerOffset = sf::Vector2f(m_window.getSize().x / 2, m_window.getSize().y / 2);
 
     m_showTrace = true;
-    m_scale = 250;
+    m_scale = 150;
 }
 
 int Application::execute()
@@ -70,10 +70,9 @@ int Application::execute()
         for (const Body& body : system.bodies())
         {
             sf::CircleShape* pShape = &m_shapes[body.name()];
-            pShape->setPosition(sf::Vector2f(static_cast<float>(body.position().x * (m_scale / AU)),
-                                           static_cast<float>(body.position().y * (m_scale / AU))));
-            // offset position to set 0,0 at middle screen pos
-            pShape->setPosition(pShape->getPosition() + m_centerOffset);
+            sf::Vector2f screenPosition(static_cast<float>(body.position().x * (m_scale / AU)),
+                                        static_cast<float>(body.position().y * (m_scale / AU)));
+            pShape->setPosition(screenPosition + m_centerOffset);
 
             m_window.draw(*pShape);
         }
