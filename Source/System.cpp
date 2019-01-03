@@ -1,14 +1,16 @@
 #include "System.h"
 
+#include <thread>
+
 System::System(const std::vector<Body>& bodies)
 {
     m_bodies = bodies;
     m_iteration = 0;
+    m_timestep = 24*3600;
 }
 
 void System::simulate()
 {
-    double timestep = 24*3600; // one day
     std::map<Body, Vector> forces;
 
 #ifdef DEBUG_ENABLED
@@ -40,10 +42,10 @@ void System::simulate()
     {
         // Update velocities based upon on the force
         Vector force = forces[body];
-        body.updateVelocity(force / body.mass() * timestep);
+        body.updateVelocity(force / body.mass() * m_timestep);
 
         // Update position based on velocity
-        body.updatePosition(body.velocity() * timestep);
+        body.updatePosition(body.velocity() * m_timestep);
     }
 
 #ifdef DEBUG_ENABLED
@@ -54,4 +56,14 @@ void System::simulate()
 std::vector<Body> System::bodies() const
 {
     return m_bodies;
+}
+
+void System::setTimestep(int timestep)
+{
+    m_timestep = timestep;
+}
+
+int System::timestep() const
+{
+    return m_timestep;
 }

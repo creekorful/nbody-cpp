@@ -32,9 +32,14 @@ int Application::execute()
                 m_window.close();
             }
 
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::T)
+            if (event.type == sf::Event::KeyPressed)
             {
-                m_showTrace = !m_showTrace;
+                if (event.key.code == sf::Keyboard::T)
+                    m_showTrace = !m_showTrace;
+                if (event.key.code == sf::Keyboard::Add)
+                    system.setTimestep(system.timestep() + 3600);
+                if (event.key.code == sf::Keyboard::Subtract)
+                    system.setTimestep(system.timestep() - 3600);
             }
 
         }

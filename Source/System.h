@@ -23,9 +23,22 @@ public:
      */
     std::vector<Body> bodies() const;
 
+    /**
+     * Set time step to use for position calculation
+     *
+     * @param timestep new timestep (in seconds)
+     */
+    void setTimestep(int timestep);
+
+    /**
+     * @return current timestep
+     */
+    int timestep() const;
+
 private:
     std::vector<Body> m_bodies;
     int m_iteration;
+    int m_timestep;
 };
 
 
