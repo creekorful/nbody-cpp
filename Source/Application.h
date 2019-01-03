@@ -23,7 +23,12 @@ private:
     bool m_showTrace;
     double m_scale;
 
-    std::vector<Body> getBodies();
+    /**
+     * load bodies from persistence storage
+     *
+     * @return bodies to be simulated
+     */
+    std::vector<Body> loadBodies();
 };
 
 

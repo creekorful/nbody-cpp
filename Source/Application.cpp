@@ -17,7 +17,7 @@ Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDes
 int Application::execute()
 {
     // Instantiate system
-    System system(getBodies());
+    System system(loadBodies());
 
     // Render loop
     while (m_window.isOpen())
@@ -77,7 +77,7 @@ int Application::execute()
     return 0;
 }
 
-std::vector<Body> Application::getBodies()
+std::vector<Body> Application::loadBodies()
 {
     BodiesLoader* pLoader = new BodiesLoader("bodies.config");
 
