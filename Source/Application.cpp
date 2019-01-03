@@ -24,6 +24,7 @@ int Application::execute()
     {
         sf::CircleShape shape(10.f); // todo use body radius & scale
         shape.setFillColor(body.color());
+        shape.setOrigin(shape.getRadius(), shape.getRadius());
         m_shapes[body.name()] = shape;
     }
 
