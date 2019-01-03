@@ -21,7 +21,14 @@ private:
     sf::RenderWindow m_window;
     sf::Vector2f m_centerOffset;
     bool m_showTrace;
+    double m_scale;
 
+    /**
+     * set scale in ratio of AU
+     *
+     * @param scale scale to be set
+     */
+    void setScale(double scale);
 
     std::vector<Body> getBodies();
 };

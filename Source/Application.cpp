@@ -11,6 +11,7 @@ Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDes
     m_centerOffset = sf::Vector2f(m_window.getSize().x / 2, m_window.getSize().y / 2);
 
     m_showTrace = true;
+    setScale(250);
 }
 
 int Application::execute()
@@ -57,8 +58,8 @@ int Application::execute()
         {
             sf::CircleShape shape(10.f); // todo radius based on body infos
             shape.setFillColor(body.color());
-            shape.setPosition(sf::Vector2f(static_cast<float>(body.position().x * SCALE),
-                                           static_cast<float>(body.position().y * SCALE)));
+            shape.setPosition(sf::Vector2f(static_cast<float>(body.position().x * m_scale),
+                                           static_cast<float>(body.position().y * m_scale)));
             // offset position to set 0,0 at middle screen pos
             shape.setPosition(shape.getPosition() + m_centerOffset);
 
@@ -86,4 +87,9 @@ std::vector<Body> Application::getBodies()
     std::vector<Body> bodies = pLoader->loadBodies();
     delete pLoader;
     return bodies;
+}
+
+void Application::setScale(double scale)
+{
+    m_scale = scale / AU;
 }
