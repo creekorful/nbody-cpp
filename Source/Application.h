@@ -23,13 +23,6 @@ private:
     bool m_showTrace;
     double m_scale;
 
-    /**
-     * set scale in ratio of AU
-     *
-     * @param scale scale to be set
-     */
-    void setScale(double scale);
-
     std::vector<Body> getBodies();
 };
 
