@@ -1,9 +1,11 @@
 #include "Body.h"
 
-Body::Body(const std::string& name, double mass, const Vector& position, const Vector& velocity, const sf::Color& color)
+Body::Body(const std::string& name, double mass, double radius, const Vector& position, const Vector& velocity,
+           const sf::Color& color)
 {
     m_name = name;
     m_mass = mass;
+    m_radius = radius;
     m_position = position;
     m_velocity = velocity;
     m_color = color;
@@ -17,6 +19,11 @@ std::string Body::name() const
 double Body::mass() const
 {
     return m_mass;
+}
+
+double Body::radius() const
+{
+    return m_radius;
 }
 
 Vector Body::position() const
@@ -70,5 +77,5 @@ sf::Color Body::color() const
 
 std::ostream& operator<<(std::ostream& outs, const Body& body)
 {
-    return outs << body.name() << " Pos=" << body.position()/AU << " Vel=" << body.velocity();
+    return outs << body.name() << " Pos=" << body.position() / AU << " Vel=" << body.velocity();
 }

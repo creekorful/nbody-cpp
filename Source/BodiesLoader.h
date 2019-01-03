@@ -12,7 +12,7 @@
  * Class to load body from file
  *
  * each body is contained in one line that follows the following format
- * body name;mass;pos_x;pos_y;velocity_x;velocity_y;color
+ * body name;mass;radius;pos_x;pos_y;velocity_x;velocity_y;color
  */
 class BodiesLoader
 {

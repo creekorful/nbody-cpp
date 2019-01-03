@@ -17,11 +17,13 @@ public:
      *
      * @param name the body name
      * @param mass the body mass (in kg)
+     * @param radius the body radius (in km)
      * @param position the body position (in km)
      * @param velocity the body velocity (in m/s)
      * @param color the body color
      */
-    Body(const std::string& name, double mass, const Vector& position, const Vector& velocity, const sf::Color& color);
+    Body(const std::string& name, double mass, double radius, const Vector& position, const Vector& velocity,
+         const sf::Color& color);
 
     /**
      * @return body name
@@ -32,6 +34,11 @@ public:
      * @return body mass in kg
      */
     double mass() const;
+
+    /**
+     * @return body radius in km
+     */
+    double radius() const;
 
     /**
      * @return vector that represent body position
@@ -91,6 +98,7 @@ public:
 private:
     std::string m_name;
     double m_mass;
+    double m_radius;
     Vector m_position;
     Vector m_velocity;
     sf::Color m_color;

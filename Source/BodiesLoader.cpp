@@ -26,10 +26,10 @@ std::vector<Body> BodiesLoader::loadBodies()
             parts.push_back(part);
         }
 
-        bodies.emplace_back(parts[0], std::stod(parts[1]),
-                            Vector(std::stod(parts[2]) * AU, std::stod(parts[3]) * AU),
-                            Vector(std::stod(parts[4]), std::stod(parts[5])),
-                            sf::Color(static_cast<sf::Uint32>(std::stoul(parts[6]))));
+        bodies.emplace_back(parts[0], std::stod(parts[1]), std::stod(parts[2]),
+                            Vector(std::stod(parts[3]) * AU, std::stod(parts[4]) * AU),
+                            Vector(std::stod(parts[5]), std::stod(parts[6])),
+                            sf::Color(static_cast<sf::Uint32>(std::stoul(parts[7]))));
     }
 
     return bodies;
