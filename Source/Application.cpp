@@ -19,6 +19,14 @@ int Application::execute()
     // Instantiate system
     System system(loadBodies());
 
+    // create initial shapes in map
+    for (const Body& body: system.bodies())
+    {
+        sf::CircleShape shape(10.f); // todo use body radius & scale
+        shape.setFillColor(body.color());
+        m_shapes[body.name()] = shape;
+    }
+
     // Render loop
     while (m_window.isOpen())
     {
@@ -60,14 +68,13 @@ int Application::execute()
         // render bodies on the screen / window
         for (const Body& body : system.bodies())
         {
-            sf::CircleShape shape(10.f); // todo radius based on body infos
-            shape.setFillColor(body.color());
-            shape.setPosition(sf::Vector2f(static_cast<float>(body.position().x * (m_scale / AU)),
+            sf::CircleShape* pShape = &m_shapes[body.name()];
+            pShape->setPosition(sf::Vector2f(static_cast<float>(body.position().x * (m_scale / AU)),
                                            static_cast<float>(body.position().y * (m_scale / AU))));
             // offset position to set 0,0 at middle screen pos
-            shape.setPosition(shape.getPosition() + m_centerOffset);
+            pShape->setPosition(pShape->getPosition() + m_centerOffset);
 
-            m_window.draw(shape);
+            m_window.draw(*pShape);
         }
 
         // render everything on the screen
