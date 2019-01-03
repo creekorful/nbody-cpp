@@ -6,8 +6,8 @@
 
 #include <SFML/Graphics/Color.hpp>
 
-#include "Vector.h"
-#include "constant.h"
+#include "../Utils/Vector.h"
+#include "../Utils/constant.h"
 
 class Body
 {

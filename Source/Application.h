@@ -9,7 +9,7 @@
 #include <SFML/Graphics/CircleShape.hpp>
 
 #include "System.h"
-#include "BodiesLoader.h"
+#include "Body/BodiesLoader.h"
 
 class Application
 {
