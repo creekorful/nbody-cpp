@@ -7,6 +7,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Graphics/Text.hpp>
 
 #include "System.h"
 #include "Body/BodiesLoader.h"
@@ -27,6 +28,10 @@ private:
     double m_scale;
     std::map<std::string, sf::CircleShape> m_shapes;
     System* m_pSystem;
+
+    // Ui
+    sf::Font m_font;
+    sf::Text m_timeDetails;
 
     /**
      * load bodies from persistence storage

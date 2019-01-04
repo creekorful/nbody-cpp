@@ -12,6 +12,17 @@ Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDes
 
     m_showTrace = true;
     m_scale = 150;
+
+    // Load fonts (todo create special loader ?)
+    if (!m_font.loadFromFile("./Arial.ttf"))
+    {
+        std::cout << "Unable to load font: " << std::endl;
+        exit (-1);
+    }
+
+    // Initialize GUI
+    m_timeDetails = sf::Text("Hello world :D", m_font);
+    m_timeDetails.setPosition(50, 50);
 }
 
 Application::~Application()
@@ -52,6 +63,9 @@ int Application::execute()
         // Perform system simulation
         m_pSystem->simulate();
 
+        // Update GUI according to simulation status
+        m_timeDetails.setString(std::to_string(m_pSystem->iteration()));
+
         // render bodies on the screen / window
         for (const Body& body : m_pSystem->bodies())
         {
@@ -62,6 +76,9 @@ int Application::execute()
 
             m_window.draw(*pShape);
         }
+
+        // Render GUI
+        m_window.draw(m_timeDetails);
 
         // render everything on the screen
         m_window.display();
