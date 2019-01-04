@@ -36,14 +36,15 @@ public:
     long timestep() const;
 
     /**
-    * @return current iteration count
-    */
-    long iteration() const;
+     * @return total elapsed simulation time (in seconds)
+     */
+    long elapsedTime() const;
 
 private:
     std::vector<Body> m_bodies;
     long m_iteration;
     long m_timestep;
+    long m_elapsedTime;
 };
 
 

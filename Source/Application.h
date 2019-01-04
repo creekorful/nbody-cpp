@@ -46,6 +46,14 @@ private:
      * @param event event to be polled
      */
     void pollEvent(const sf::Event& event);
+
+    /**
+     * Compute elapsed time into human readable format
+     *
+     * @param time time in seconds
+     * @return time in human readable format
+     */
+    std::string formatTime(double time) const;
 };
 
 

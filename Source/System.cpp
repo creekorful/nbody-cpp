@@ -7,6 +7,7 @@ System::System(const std::vector<Body>& bodies)
     m_bodies = bodies;
     m_iteration = 0;
     m_timestep = 24*3600;
+    m_elapsedTime = 0;
 }
 
 void System::simulate()
@@ -50,6 +51,9 @@ void System::simulate()
         body.updatePosition(body.velocity() * m_timestep);
     }
 
+    // Update elapsed time
+    m_elapsedTime += m_timestep;
+
 #ifdef DEBUG_ENABLED
     std::cout << std::endl;
 #endif
@@ -70,7 +74,7 @@ long System::timestep() const
     return m_timestep;
 }
 
-long System::iteration() const
+long System::elapsedTime() const
 {
-    return m_iteration;
+    return m_elapsedTime;
 }

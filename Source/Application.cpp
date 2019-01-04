@@ -64,7 +64,7 @@ int Application::execute()
         m_pSystem->simulate();
 
         // Update GUI according to simulation status
-        m_timeDetails.setString(std::to_string(m_pSystem->iteration()));
+        m_timeDetails.setString(formatTime(m_pSystem->elapsedTime()));
 
         // render bodies on the screen / window
         for (const Body& body : m_pSystem->bodies())
@@ -124,4 +124,9 @@ void Application::pollEvent(const sf::Event& event)
         if (event.key.code == sf::Keyboard::PageDown)
             m_scale++;
     }
+}
+
+std::string Application::formatTime(double time) const
+{
+    return std::to_string(time / (24*3600)) + "days"; // todo better format
 }
