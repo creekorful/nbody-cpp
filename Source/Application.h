@@ -16,6 +16,8 @@ class Application
 public:
     Application(int argc, char** argv);
 
+    ~Application();
+
     int execute();
 
 private:
@@ -24,6 +26,7 @@ private:
     bool m_showTrace;
     double m_scale;
     std::map<std::string, sf::CircleShape> m_shapes;
+    System* m_pSystem;
 
     /**
      * load bodies from persistence storage
@@ -31,6 +34,13 @@ private:
      * @return bodies to be simulated
      */
     std::vector<Body> loadBodies();
+
+    /**
+     * poll event from the window
+     *
+     * @param event event to be polled
+     */
+    void pollEvent(const sf::Event& event);
 };
 
 

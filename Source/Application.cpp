@@ -14,13 +14,18 @@ Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDes
     m_scale = 150;
 }
 
+Application::~Application()
+{
+    delete m_pSystem;
+}
+
 int Application::execute()
 {
     // Instantiate system
-    System system(loadBodies());
+    m_pSystem = new System(loadBodies());
 
     // create initial shapes in map
-    for (const Body& body: system.bodies())
+    for (const Body& body: m_pSystem->bodies())
     {
         sf::CircleShape shape(10.f); // todo use body radius & scale
         shape.setFillColor(body.color());
@@ -36,26 +41,7 @@ int Application::execute()
 
         while (m_window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed ||
-                (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
-            {
-                m_window.close();
-            }
-
-            if (event.type == sf::Event::KeyPressed)
-            {
-                if (event.key.code == sf::Keyboard::T)
-                    m_showTrace = !m_showTrace;
-                if (event.key.code == sf::Keyboard::Add)
-                    system.setTimestep(system.timestep() + 3600);
-                if (event.key.code == sf::Keyboard::Subtract)
-                    system.setTimestep(system.timestep() - 3600);
-                if (event.key.code == sf::Keyboard::PageUp)
-                    m_scale--;
-                if (event.key.code == sf::Keyboard::PageDown)
-                    m_scale++;
-            }
-
+            pollEvent(event);
         }
 
         if (!m_showTrace)
@@ -64,10 +50,10 @@ int Application::execute()
         }
 
         // Perform system simulation
-        system.simulate();
+        m_pSystem->simulate();
 
         // render bodies on the screen / window
-        for (const Body& body : system.bodies())
+        for (const Body& body : m_pSystem->bodies())
         {
             sf::CircleShape* pShape = &m_shapes[body.name()];
             sf::Vector2f screenPosition(static_cast<float>(body.position().x * (m_scale / AU)),
@@ -98,4 +84,27 @@ std::vector<Body> Application::loadBodies()
     std::vector<Body> bodies = pLoader->loadBodies();
     delete pLoader;
     return bodies;
+}
+
+void Application::pollEvent(const sf::Event& event)
+{
+    if (event.type == sf::Event::Closed ||
+        (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
+    {
+        m_window.close();
+    }
+
+    if (event.type == sf::Event::KeyPressed)
+    {
+        if (event.key.code == sf::Keyboard::T)
+            m_showTrace = !m_showTrace;
+        if (event.key.code == sf::Keyboard::Add)
+            m_pSystem->setTimestep(m_pSystem->timestep() + 3600);
+        if (event.key.code == sf::Keyboard::Subtract)
+            m_pSystem->setTimestep(m_pSystem->timestep() - 3600);
+        if (event.key.code == sf::Keyboard::PageUp)
+            m_scale--;
+        if (event.key.code == sf::Keyboard::PageDown)
+            m_scale++;
+    }
 }
