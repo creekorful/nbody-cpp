@@ -58,12 +58,12 @@ std::vector<Body> System::bodies() const
     return m_bodies;
 }
 
-void System::setTimestep(int timestep)
+void System::setTimestep(long timestep)
 {
     m_timestep = timestep;
 }
 
-int System::timestep() const
+long System::timestep() const
 {
     return m_timestep;
 }

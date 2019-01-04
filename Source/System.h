@@ -28,17 +28,17 @@ public:
      *
      * @param timestep new timestep (in seconds)
      */
-    void setTimestep(int timestep);
+    void setTimestep(long timestep);
 
     /**
-     * @return current timestep
+     * @return current timestep (in seconds)
      */
-    int timestep() const;
+    long timestep() const;
 
 private:
     std::vector<Body> m_bodies;
-    int m_iteration;
-    int m_timestep;
+    long m_iteration;
+    long m_timestep;
 };
 
 
