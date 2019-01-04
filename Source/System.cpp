@@ -13,8 +13,10 @@ void System::simulate()
 {
     std::map<Body, Vector> forces;
 
+    m_iteration++;
+
 #ifdef DEBUG_ENABLED
-    std::cout << "Iteration #" << m_iteration++ << std::endl;
+    std::cout << "Iteration #" << m_iteration << std::endl;
 #endif
 
     // Compute force for all bodies
@@ -66,4 +68,9 @@ void System::setTimestep(long timestep)
 long System::timestep() const
 {
     return m_timestep;
+}
+
+long System::iteration() const
+{
+    return m_iteration;
 }

@@ -35,6 +35,11 @@ public:
      */
     long timestep() const;
 
+    /**
+    * @return current iteration count
+    */
+    long iteration() const;
+
 private:
     std::vector<Body> m_bodies;
     long m_iteration;
