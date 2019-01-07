@@ -1,8 +1,8 @@
 #ifndef NBODY_CPP_APPLICATION_H
 #define NBODY_CPP_APPLICATION_H
 
-
 #include "../Majoris/Source/Engine/GameEngine.h"
+#include "States/MainMenuState.h"
 
 class Application
 {
