@@ -18,4 +18,4 @@ add_executable(nbody_cpp Source/main.cpp Source/Application/Utils/constant.h
         Source/Application/System.cpp Source/Application/System.h
         Source/Application/Body/BodiesLoader.cpp Source/Application/Body/BodiesLoader.h)
 
-target_link_libraries(nbody_cpp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+target_link_libraries(nbody_cpp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} Majoris)
