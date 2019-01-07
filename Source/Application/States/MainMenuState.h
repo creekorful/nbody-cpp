@@ -1,6 +1,9 @@
 #ifndef NBODY_CPP_MAINMENUSTATE_H
 #define NBODY_CPP_MAINMENUSTATE_H
 
+#include <iostream>
+
+#include <SFML/Graphics/Text.hpp>
 
 #include "../../Majoris/Source/Engine/State/GameState.h"
 
@@ -24,6 +27,12 @@ protected:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
     void initialize() override;
+
+private:
+    sf::Font m_arialFont;
+    sf::Text m_playText;
+    sf::Text m_editorText;
+    sf::Text m_quitText;
 };
 
 
