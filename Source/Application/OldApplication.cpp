@@ -1,6 +1,6 @@
-#include "Application.h"
+#include "OldApplication.h"
 
-Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDesktopMode(), "N-Body C++",
+OldApplication::OldApplication(int argc, char** argv) : m_window(sf::VideoMode::getDesktopMode(), "N-Body C++",
                                                            sf::Style::Fullscreen)
 {
     // set digits precision to 2 decimals
@@ -25,12 +25,12 @@ Application::Application(int argc, char** argv) : m_window(sf::VideoMode::getDes
     m_timeDetails.setPosition(50, 50);
 }
 
-Application::~Application()
+OldApplication::~OldApplication()
 {
     delete m_pSystem;
 }
 
-int Application::execute()
+int OldApplication::execute()
 {
     // Instantiate system
     m_pSystem = new System(loadBodies());
@@ -87,7 +87,7 @@ int Application::execute()
     return 0;
 }
 
-std::vector<Body> Application::loadBodies()
+std::vector<Body> OldApplication::loadBodies()
 {
     BodiesLoader* pLoader = new BodiesLoader("bodies.config");
 
@@ -103,7 +103,7 @@ std::vector<Body> Application::loadBodies()
     return bodies;
 }
 
-void Application::pollEvent(const sf::Event& event)
+void OldApplication::pollEvent(const sf::Event& event)
 {
     if (event.type == sf::Event::Closed ||
         (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
@@ -126,7 +126,7 @@ void Application::pollEvent(const sf::Event& event)
     }
 }
 
-std::string Application::formatTime(double time) const
+std::string OldApplication::formatTime(double time) const
 {
     return std::to_string(time / (24*3600)) + "days"; // todo better format
 }

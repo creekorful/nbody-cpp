@@ -1,7 +1,7 @@
-#include "Application/Application.h"
+#include "Application/OldApplication.h"
 
 int main(int argc, char** argv)
 {
-    auto application = new Application(argc, argv);
+    auto application = new OldApplication(argc, argv);
     return application->execute();
 }

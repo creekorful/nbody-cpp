@@ -12,12 +12,12 @@
 #include "System.h"
 #include "Body/BodiesLoader.h"
 
-class Application
+class OldApplication
 {
 public:
-    Application(int argc, char** argv);
+    OldApplication(int argc, char** argv);
 
-    ~Application();
+    ~OldApplication();
 
     int execute();
 
