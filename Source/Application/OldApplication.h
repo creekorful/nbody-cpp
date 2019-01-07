@@ -1,5 +1,5 @@
-#ifndef NBODY_CPP_APPLICATION_H
-#define NBODY_CPP_APPLICATION_H
+#ifndef NBODY_CPP_OLD_APPLICATION_H
+#define NBODY_CPP_OLD_APPLICATION_H
 
 #include <iomanip>
 #include <map>
@@ -57,4 +57,4 @@ private:
 };
 
 
-#endif //NBODY_CPP_APPLICATION_H
+#endif //NBODY_CPP_OLD_APPLICATION_H
