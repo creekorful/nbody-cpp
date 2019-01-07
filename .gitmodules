@@ -1,0 +1,3 @@
+[submodule "Source/Majoris"]
+	path = Source/Majoris
+	url = git@github.com:creekorful/majoris.git
