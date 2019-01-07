@@ -8,6 +8,14 @@ find_package(SFML REQUIRED COMPONENTS graphics window system)
 
 include_directories(${SFML_INCLUDE_DIR})
 
-add_executable(nbody_cpp Source/main.cpp Source/Application/Utils/constant.h Source/Application/Application.cpp Source/Application/Application.h Source/Application/Body/Body.cpp Source/Application/Body/Body.h Source/Application/Utils/Vector.cpp Source/Application/Utils/Vector.h Source/Application/System.cpp Source/Application/System.h Source/Application/Body/BodiesLoader.cpp Source/Application/Body/BodiesLoader.h)
+
+add_subdirectory(Source/Majoris)
+
+add_executable(nbody_cpp Source/main.cpp Source/Application/Utils/constant.h
+        Source/Application/Application.cpp Source/Application/Application.h
+        Source/Application/Body/Body.cpp Source/Application/Body/Body.h
+        Source/Application/Utils/Vector.cpp Source/Application/Utils/Vector.h
+        Source/Application/System.cpp Source/Application/System.h
+        Source/Application/Body/BodiesLoader.cpp Source/Application/Body/BodiesLoader.h)
 
 target_link_libraries(nbody_cpp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
