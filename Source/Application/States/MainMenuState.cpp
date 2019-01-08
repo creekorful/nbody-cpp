@@ -4,11 +4,7 @@ void MainMenuState::initialize()
 {
     // Load font
     getEngine()->fontManager().loadFont("Fonts/Arial.ttf");
-    if (!m_arialFont.loadFromFile("Fonts/Arial.ttf"))
-    {
-        std::cerr << "Unable to load font" << std::endl;
-        exit(-1);
-    }
+    m_arialFont = getEngine()->fontManager().getFont("Arial");
 
     // Get window size
     sf::Vector2u screenSize = getEngine()->screenSize();
