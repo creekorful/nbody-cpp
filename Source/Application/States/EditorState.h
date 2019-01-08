@@ -3,6 +3,8 @@
 
 #include "../../Majoris/Source/Engine/State/GameState.h"
 
+#include "MainMenuState.h"
+
 class EditorState : public ma::GameState
 {
 public:

@@ -51,6 +51,8 @@ void MainMenuState::onMenuItemSelected(const std::string& itemName)
     else if (itemName == SIMULATION_EDITOR)
     {
         getEngine()->setCurrentState(new EditorState());
+
+        // todo fix memory leak here
     }
 
     else if (itemName == QUIT)

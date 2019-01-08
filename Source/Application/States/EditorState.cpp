@@ -1,5 +1,4 @@
 #include "EditorState.h"
-#include "MainMenuState.h"
 
 std::string EditorState::title()
 {
