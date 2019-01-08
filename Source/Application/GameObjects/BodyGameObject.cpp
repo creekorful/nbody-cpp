@@ -9,5 +9,6 @@ BodyGameObject::BodyGameObject(const std::string& name, float radius, const sf::
 
 void BodyGameObject::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+    states.transform *= transform();
     target.draw(m_shape, states);
 }
