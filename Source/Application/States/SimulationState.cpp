@@ -77,22 +77,3 @@ void SimulationState::pollEvent(const sf::Event& event)
 
     GameState::pollEvent(event);
 }
-
-void SimulationState::reinitialize()
-{
-    GameState::reinitialize();
-
-    // Delete game objects map
-    for (auto entry : m_bodiesGameObjects)
-    {
-        delete entry.second;
-    }
-    m_bodiesGameObjects.clear();
-
-    delete m_pSystem;
-}
-
-bool SimulationState::shouldReinitialize()
-{
-    return true;
-}

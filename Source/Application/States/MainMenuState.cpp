@@ -40,10 +40,11 @@ void MainMenuState::onMenuItemSelected(const std::string& itemName)
     if (itemName == PLAY_SIMULATION)
     {
         // todo before that open state w/ menu to show saved simulations and allow loading
-        SimulationState* state = &SimulationState::instance();
-        getEngine()->setCurrentState(state);
+        auto pState = new SimulationState();
+        getEngine()->setCurrentState(pState);
+        pState->initialize(new System(loadBodies()));
 
-        state->initialize(new System(loadBodies()));
+        // todo fix memory leak here
     }
 
     else if (itemName == SIMULATION_EDITOR)
