@@ -6,15 +6,19 @@
 #include <SFML/Graphics/Text.hpp>
 
 #include "../../Majoris/Source/Engine/State/GameState.h"
+#include "../../Majoris/Source/Engine/GameObject/Gui/Menu.h"
 
-class MainMenuState : public ma::GameState
+class MainMenuState : public ma::GameState, public ma::Gui::IMenuCallback
 {
 public:
-    void update(float dt) override;
 
     void pollEvent(const sf::Event& event) override;
 
     std::string title() override;
+
+    void onMenuItemSelected(const std::string& itemName) override;
+
+    void onMenuItemHovered(const std::string& itemName) override;
 
 
     static MainMenuState& instance()
@@ -24,15 +28,11 @@ public:
     }
 
 protected:
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-
     void initialize() override;
 
 private:
     sf::Font m_arialFont;
-    sf::Text m_playText;
-    sf::Text m_editorText;
-    sf::Text m_quitText;
+    ma::Gui::Menu m_menu;
 };
 
 
