@@ -19,6 +19,10 @@ public:
      */
     void initialize(System* pSystem);
 
+    void reinitialize() override;
+
+    bool shouldReinitialize() override;
+
     static SimulationState& instance()
     {
         static SimulationState instance;
@@ -27,8 +31,6 @@ public:
 
     void update(float dt) override;
 
-protected:
-public:
     void pollEvent(const sf::Event& event) override;
 
 protected:
