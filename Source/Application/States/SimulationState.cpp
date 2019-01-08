@@ -49,9 +49,23 @@ void SimulationState::update(float dt)
 void SimulationState::pollEvent(const sf::Event& event)
 {
     // if we press escape return to main menu todo show pause menu?
-    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+    if (event.type == sf::Event::KeyPressed)
     {
-        getEngine()->setCurrentState(&MainMenuState::instance());
+        if (event.key.code == sf::Keyboard::Escape)
+        {
+            getEngine()->setCurrentState(&MainMenuState::instance());
+        }
+
+        /*if (event.key.code == sf::Keyboard::T)
+            m_showTrace = !m_showTrace;*/
+        if (event.key.code == sf::Keyboard::Add)
+            m_pSystem->setTimestep(m_pSystem->timestep() + 3600);
+        if (event.key.code == sf::Keyboard::Subtract)
+            m_pSystem->setTimestep(m_pSystem->timestep() - 3600);
+        if (event.key.code == sf::Keyboard::PageUp)
+            m_scale--;
+        if (event.key.code == sf::Keyboard::PageDown)
+            m_scale++;
     }
 
     GameState::pollEvent(event);
