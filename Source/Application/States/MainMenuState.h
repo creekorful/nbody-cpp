@@ -1,6 +1,10 @@
 #ifndef NBODY_CPP_MAINMENUSTATE_H
 #define NBODY_CPP_MAINMENUSTATE_H
 
+#define PLAY_SIMULATION "Play Simulation"
+#define SIMULATION_EDITOR "Simulation Editor"
+#define QUIT "Quit"
+
 #include <iostream>
 
 #include <SFML/Graphics/Text.hpp>

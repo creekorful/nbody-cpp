@@ -16,7 +16,7 @@ void MainMenuState::initialize()
     // Initialize menu
     m_menu.setDefaultColor(sf::Color::Yellow);
     m_menu.setHighlightColor(sf::Color::Red);
-    m_menu.setItems({"Play", "Editor", "Quit"}, m_arialFont);
+    m_menu.setItems({PLAY_SIMULATION, SIMULATION_EDITOR, QUIT}, m_arialFont);
     m_menu.setPosition(screenSize.x / 2, screenSize.y / 2);
     m_menu.setCallback(this);
     add(&m_menu);
@@ -39,17 +39,17 @@ void MainMenuState::pollEvent(const sf::Event& event)
 
 void MainMenuState::onMenuItemSelected(const std::string& itemName)
 {
-    if (itemName == "Play")
+    if (itemName == PLAY_SIMULATION)
     {
 
     }
 
-    else if (itemName == "Editor")
+    else if (itemName == SIMULATION_EDITOR)
     {
 
     }
 
-    else if (itemName == "Quit")
+    else if (itemName == QUIT)
     {
         getEngine()->quit();
     }
