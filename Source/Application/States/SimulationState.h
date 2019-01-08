@@ -37,6 +37,14 @@ private:
     std::map<std::string, BodyGameObject*> m_bodiesGameObjects;
 
     ma::Gui::Text m_timeDetails;
+
+    /**
+     * Compute elapsed time into human readable format
+     *
+     * @param time time in seconds
+     * @return time in human readable format
+     */
+    std::string formatTime(double time) const;
 };
 
 

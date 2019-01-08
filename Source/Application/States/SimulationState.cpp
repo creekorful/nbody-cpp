@@ -41,6 +41,9 @@ void SimulationState::update(float dt)
     // Perform system simulation
     m_pSystem->simulate();
 
+    // Update GUI according to simulation status
+    m_timeDetails.setText(formatTime(m_pSystem->elapsedTime()));
+
     // Update game object according to simulation results
     for (const Body& body : m_pSystem->bodies())
     {
@@ -76,4 +79,9 @@ void SimulationState::pollEvent(const sf::Event& event)
     }
 
     GameState::pollEvent(event);
+}
+
+std::string SimulationState::formatTime(double time) const
+{
+    return std::to_string(time / (24*3600)) + "days"; // todo better format
 }
