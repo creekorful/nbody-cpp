@@ -1,4 +1,6 @@
 #include "MainMenuState.h"
+#include "SimulationState.h"
+#include "../Body/BodiesLoader.h"
 
 void MainMenuState::initialize()
 {
@@ -37,7 +39,11 @@ void MainMenuState::onMenuItemSelected(const std::string& itemName)
 {
     if (itemName == PLAY_SIMULATION)
     {
+        // todo before that open state w/ menu to show saved simulations and allow loading
+        SimulationState* state = &SimulationState::instance();
+        getEngine()->setCurrentState(state);
 
+        state->initialize(new System(loadBodies()));
     }
 
     else if (itemName == SIMULATION_EDITOR)
@@ -53,4 +59,20 @@ void MainMenuState::onMenuItemSelected(const std::string& itemName)
 
 void MainMenuState::onMenuItemHovered(const std::string& itemName)
 {
+}
+
+std::vector<Body> MainMenuState::loadBodies()
+{
+    BodiesLoader* pLoader = new BodiesLoader("bodies.config");
+
+    if (!pLoader->isOpen())
+    {
+        delete pLoader;
+        std::cerr << "Unable to open bodies.config" << std::endl;
+        exit(-1);
+    }
+
+    std::vector<Body> bodies = pLoader->loadBodies();
+    delete pLoader;
+    return bodies;
 }

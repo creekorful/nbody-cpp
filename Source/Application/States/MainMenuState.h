@@ -11,6 +11,7 @@
 
 #include "../../Majoris/Source/Engine/State/GameState.h"
 #include "../../Majoris/Source/Engine/GameObject/Gui/Menu.h"
+#include "../Body/Body.h"
 
 class MainMenuState : public ma::GameState, public ma::Gui::IMenuCallback
 {
@@ -37,6 +38,8 @@ protected:
 private:
     sf::Font m_arialFont;
     ma::Gui::Menu m_menu;
+
+    std::vector<Body> loadBodies();
 };
 
 
