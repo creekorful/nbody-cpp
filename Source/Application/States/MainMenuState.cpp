@@ -1,6 +1,7 @@
 #include "MainMenuState.h"
 #include "SimulationState.h"
 #include "../Body/BodiesLoader.h"
+#include "EditorState.h"
 
 void MainMenuState::initialize()
 {
@@ -49,7 +50,7 @@ void MainMenuState::onMenuItemSelected(const std::string& itemName)
 
     else if (itemName == SIMULATION_EDITOR)
     {
-
+        getEngine()->setCurrentState(new EditorState());
     }
 
     else if (itemName == QUIT)

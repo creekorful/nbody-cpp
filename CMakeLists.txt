@@ -18,6 +18,6 @@ add_executable(nbody_cpp Source/main.cpp Source/Application/Utils/constant.h
         Source/Application/System.cpp Source/Application/System.h
         Source/Application/Body/BodiesLoader.cpp Source/Application/Body/BodiesLoader.h
         Source/Application/Application.cpp Source/Application/Application.h
-        Source/Application/States/MainMenuState.cpp Source/Application/States/MainMenuState.h Source/Application/States/SimulationState.cpp Source/Application/States/SimulationState.h Source/Application/GameObjects/BodyGameObject.cpp Source/Application/GameObjects/BodyGameObject.h)
+        Source/Application/States/MainMenuState.cpp Source/Application/States/MainMenuState.h Source/Application/States/SimulationState.cpp Source/Application/States/SimulationState.h Source/Application/GameObjects/BodyGameObject.cpp Source/Application/GameObjects/BodyGameObject.h Source/Application/States/EditorState.cpp Source/Application/States/EditorState.h)
 
 target_link_libraries(nbody_cpp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} Majoris)
