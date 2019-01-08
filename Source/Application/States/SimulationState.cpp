@@ -11,12 +11,19 @@ void SimulationState::initialize()
     sf::Vector2u screenSize = getEngine()->screenSize();
     m_centerOffset = sf::Vector2f(screenSize.x / 2, screenSize.y / 2);
 
+    // create GUI
+    sf::Font& font = getEngine()->fontManager().getFont("Arial");
+    m_timeDetails.setFont(font);
+    m_timeDetails.setPosition(sf::Vector2f(150, 150));
+    m_timeDetails.setText("Hello world :D");
+
+    add(&m_timeDetails);
+
     m_scale = 150;
 }
 
 void SimulationState::initialize(System* pSystem)
 {
-    // todo maybe manage cleanup
     m_pSystem = pSystem;
 
     // create initial game objects in map

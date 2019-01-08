@@ -4,6 +4,7 @@
 #include <map>
 
 #include "../../Majoris/Source/Engine/State/GameState.h"
+#include "../../Majoris/Source/Engine/GameObject/Gui/Text.h"
 #include "../System.h"
 #include "../GameObjects/BodyGameObject.h"
 
@@ -44,6 +45,8 @@ private:
     double m_scale;
 
     std::map<std::string, BodyGameObject*> m_bodiesGameObjects;
+
+    ma::Gui::Text m_timeDetails;
 };
 
 
