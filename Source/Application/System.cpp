@@ -2,13 +2,18 @@
 
 #include <thread>
 
-System::System(const std::vector<Body>& bodies)
+System::System(const std::vector<Body>& bodies) : System()
 {
     m_bodies = bodies;
+}
+
+System::System()
+{
     m_iteration = 0;
     m_timestep = 24*3600;
     m_elapsedTime = 0;
 }
+
 
 void System::simulate()
 {

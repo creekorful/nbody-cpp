@@ -1,8 +1,8 @@
 #ifndef NBODY_CPP_MAINMENUSTATE_H
 #define NBODY_CPP_MAINMENUSTATE_H
 
-#define PLAY_SIMULATION "Play Simulation"
-#define SIMULATION_EDITOR "Simulation Editor"
+#define LOAD_SYSTEM "Load System"
+#define SYSTEM_EDITOR "System Editor"
 #define QUIT "Quit"
 
 #include <iostream>
@@ -12,6 +12,8 @@
 #include "../../Majoris/Source/Engine/State/GameState.h"
 #include "../../Majoris/Source/Engine/GameObject/Gui/Menu.h"
 #include "../Body/Body.h"
+
+#include "LoadSystemState.h"
 
 class MainMenuState : public ma::GameState, public ma::Gui::IMenuCallback
 {
@@ -38,8 +40,6 @@ protected:
 private:
     sf::Font m_arialFont;
     ma::Gui::Menu m_menu;
-
-    std::vector<Body> loadBodies();
 };
 
 

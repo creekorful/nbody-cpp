@@ -16,9 +16,9 @@ public:
     /**
      * Initialize the simulation using provided system
      *
-     * @param pSystem pointer to the system to simulate
+     * @param system system to simulate
      */
-    void initialize(System* pSystem);
+    void initialize(System system);
 
     void update(float dt) override;
 
@@ -28,7 +28,7 @@ protected:
     void initialize() override;
 
 private:
-    System* m_pSystem{};
+    System m_system;
 
     sf::Vector2f m_centerOffset;
 

@@ -1,3 +1,5 @@
+#include <utility>
+
 #include "SimulationState.h"
 #include "MainMenuState.h"
 
@@ -22,12 +24,12 @@ void SimulationState::initialize()
     m_scale = 150;
 }
 
-void SimulationState::initialize(System* pSystem)
+void SimulationState::initialize(System system)
 {
-    m_pSystem = pSystem;
+    m_system = std::move(system);
 
     // create initial game objects in map
-    for (const Body& body: m_pSystem->bodies())
+    for (const Body& body: m_system.bodies())
     {
         m_bodiesGameObjects[body.name()] = new BodyGameObject(body.name(), 10.f, body.color());
 
@@ -39,13 +41,13 @@ void SimulationState::initialize(System* pSystem)
 void SimulationState::update(float dt)
 {
     // Perform system simulation
-    m_pSystem->simulate();
+    m_system.simulate();
 
     // Update GUI according to simulation status
-    m_timeDetails.setText(formatTime(m_pSystem->elapsedTime()));
+    m_timeDetails.setText(formatTime(m_system.elapsedTime()));
 
     // Update game object according to simulation results
-    for (const Body& body : m_pSystem->bodies())
+    for (const Body& body : m_system.bodies())
     {
         BodyGameObject* pBodyGameObject = m_bodiesGameObjects[body.name()];
         sf::Vector2f screenPosition(static_cast<float>(body.position().x * (m_scale / AU)),
@@ -69,9 +71,9 @@ void SimulationState::pollEvent(const sf::Event& event)
         /*if (event.key.code == sf::Keyboard::T)
             m_showTrace = !m_showTrace;*/
         if (event.key.code == sf::Keyboard::Add)
-            m_pSystem->setTimestep(m_pSystem->timestep() + 3600);
+            m_system.setTimestep(m_system.timestep() + 3600);
         if (event.key.code == sf::Keyboard::Subtract)
-            m_pSystem->setTimestep(m_pSystem->timestep() - 3600);
+            m_system.setTimestep(m_system.timestep() - 3600);
         if (event.key.code == sf::Keyboard::PageUp)
             m_scale--;
         if (event.key.code == sf::Keyboard::PageDown)
