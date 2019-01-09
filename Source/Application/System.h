@@ -15,8 +15,6 @@ public:
 
     explicit System(const std::vector<Body>& bodies);
 
-    void setBodies(const std::vector<Body>& bodies);
-
     /**
      * perform one step / iteration
      * this will compute bodies position
