@@ -1,19 +1,11 @@
 #include "BodiesLoader.h"
 
-BodiesLoader::BodiesLoader(const std::string& filePath) : m_file(filePath)
-{
-}
-
-bool BodiesLoader::isOpen()
-{
-    return m_file.is_open();
-}
-
-std::vector<Body> BodiesLoader::loadBodies()
+std::vector<Body> BodiesLoader::loadBodies(const std::string& fileContent)
 {
     std::vector<Body> bodies;
     std::string line;
-    while (std::getline(m_file, line))
+    std::istringstream iss(fileContent);
+    while (std::getline(iss, line))
     {
         std::stringstream ssline(line);
         std::vector<std::string> parts;

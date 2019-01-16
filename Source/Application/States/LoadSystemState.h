@@ -3,13 +3,17 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 
 #include "../../Majoris/Source/Engine/State/GameState.h"
 #include "../../Majoris/Source/Engine/GameObject/Gui/Menu.h"
+#include "../../Majoris/Source/Engine/Filesystem/Directory.h"
 
 #include "../System.h"
 #include "../Body/BodiesLoader.h"
 #include "MainMenuState.h"
+
+#define BACK "Back"
 
 class LoadSystemState : public ma::GameState, public ma::Gui::IMenuCallback
 {
@@ -32,13 +36,15 @@ protected:
 private:
     ma::Gui::Menu m_saveMenu;
 
+    std::map<std::string, ma::Filesystem::File> m_systemFiles;
+
     /**
      * Load system from given file
      *
-     * @param fileName the file name
+     * @param file the system file
      * @return loaded system
      */
-    System loadSystem(const std::string& fileName);
+    System loadSystem(ma::Filesystem::File file);
 };
 
 

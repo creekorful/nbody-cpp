@@ -3,13 +3,12 @@
 
 #include <iostream>
 #include <vector>
-#include <fstream>
 #include <sstream>
 
 #include "Body.h"
 
 /**
- * Class to load body from file
+ * Class to load body from string content
  *
  * each body is contained in one line that follows the following format
  * body name;mass;radius;pos_x;pos_y;velocity_x;velocity_y;color
@@ -18,24 +17,12 @@ class BodiesLoader
 {
 public:
     /**
-     * Instantiate bodies loader on specified file
+     * Read bodies from given string content
      *
-     * @param filePath the file path
-     */
-    explicit BodiesLoader(const std::string& filePath);
-
-    /**
-     * @return true if the file is open (and ready for reading)
-     */
-    bool isOpen();
-
-    /**
+     * @param fileContent the file content
      * @return loaded bodies
      */
-    std::vector<Body> loadBodies();
-
-private:
-    std::ifstream m_file;
+    static std::vector<Body> loadBodies(const std::string& fileContent);
 };
 
 
