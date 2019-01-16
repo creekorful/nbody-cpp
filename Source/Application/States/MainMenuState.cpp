@@ -6,7 +6,7 @@
 void MainMenuState::initialize()
 {
     // Load font
-    getEngine()->fontManager().loadFont("Fonts/Arial.ttf");
+    getEngine()->fontManager().loadFont("Arial", "Fonts/Arial.ttf");
     m_arialFont = getEngine()->fontManager().getFont("Arial");
 
     // Get window size
